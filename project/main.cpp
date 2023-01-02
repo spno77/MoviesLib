@@ -4,12 +4,16 @@
 
 #include "config.h"
 #include "button.h"
+#include "movie.h"
 
 using namespace std;
 
-
+// Global variables for test purposes
 Button bt2;
+Movie movie("pio",1212,"asdasd","asda","asdsd" );
 bool test = false;
+list<Movie *> movieList;
+
 
 void update(float ms)
 {
@@ -28,6 +32,13 @@ void update(float ms)
 
 void draw()
 {
+//test
+    createMovieList(movieList);
+    auto mv = movieList.begin();
+
+    string title = (*mv)->getTitle();
+//////////////////////////////////////////////////////
+
 	graphics::Brush br;
  	SETCOLOR(br.fill_color,0.0,0.1,0.1);
 
@@ -39,14 +50,14 @@ void draw()
  	bt2.draw();
 
  	if(test == true){
- 		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT,13, "Movies", br);
+ 		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT,13, title, br);
  	}
 }
  
 int main()
 {
     graphics::createWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"MoviesLib");
- 
+
     graphics::setDrawFunction(draw);
     graphics::setUpdateFunction(update);
  
@@ -54,9 +65,11 @@ int main()
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
     
     graphics::Brush br;
+
  	SETCOLOR(br.fill_color,0.4,0.3,0.8);
- 	graphics::setWindowBackground(br);
-   
+    
+    graphics::setWindowBackground(br);
+
     graphics::startMessageLoop();
  
     return 0;

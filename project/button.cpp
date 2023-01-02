@@ -1,16 +1,14 @@
 #include "button.h"
 
+// Button Constructor
 Button::Button()
-{
+{}
 
-}
-
-
+// Button Destructor
 Button::~Button()
-{
+{}
 
-}
-
+//initialize Button memmber variables
 void Button::init(float posX,float posY,float width1,float height1,string text1)
 {
 	positionX = posX; 
@@ -34,6 +32,7 @@ void Button::update()
     */
 }
 
+// Draws a button in the screen
 void Button::draw()
 {
 	graphics::Brush br;
@@ -48,6 +47,7 @@ void Button::draw()
 }
 
 
+// Checks if mouse pointer is inside button surface
 bool Button::isPressed(float mouseX,float mouseY)
 {
 	if (positionX - (width/2) <= mouseX && mouseX <= positionX + (width/2))
@@ -57,18 +57,18 @@ bool Button::isPressed(float mouseX,float mouseY)
 	return false;
 }
 
-//positionX
+//positionX getter/setter
 float Button::getPositionX() { return positionX;}
 void  Button::setPositionX(float positionX1) { positionX = positionX1; }
 
-//positionY
+//positionY getter/setter
 float Button::getPositionY() { return positionY; }
 void  Button::setPositionY(float positionY1) { positionY = positionY1; }
 
-//width
+//width getter/setter
 float Button::getWidth() { return width; }
 void  Button::setWidth(float width1) {width = width1; }
 
-//height
+//height getter/setter
 float Button::getHeight(){ return height; }
 void  Button::setHeight(float height1){height = height1 ;}
