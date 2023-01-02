@@ -35,7 +35,7 @@ void draw()
  	graphics::drawText(CANVAS_WIDTH/2 - 22,CANVAS_HEIGHT-72,8, "Movies", br);
 
  	//Button bt;
- 	bt2.init(CANVAS_WIDTH/2,CANVAS_HEIGHT/2,10,5);
+ 	bt2.init(CANVAS_WIDTH/2,CANVAS_HEIGHT/2,12,5,"Search");
  	bt2.draw();
 
  	if(test == true){

@@ -12,12 +12,13 @@ class Button
 {
 	float positionX,positionY;   // x,y coordinates of Button's center    
 	float width, height;		 //	Button's width and height
+	string text;				 // Text written inside button				
 
 public:
 	Button();
 	~Button();
 
-	void init(float posX,float posY,float width1,float height1);
+	void init(float posX,float posY,float width1,float height1,string text1);
 	void draw();
 	void update();
 
