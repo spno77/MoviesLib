@@ -5,22 +5,24 @@
 #include <string>
 
 #include "config.h"
+#include "widget.h"
 
 using namespace std;
 
-class Button
+//class Button is a derived class of Widget abstract class
+class Button: public Widget
 {
 	float positionX,positionY;   // x,y coordinates of Button's center    
 	float width, height;		 //	Button's width and height
-	string text;				 // Text written inside button				
+	string text;				 // Text written inside the button surface				
 
 public:
 	Button();
 	~Button();
 
-	void init(float posX,float posY,float width1,float height1,string text1);
-	void draw();
-	void update();
+	void  init(float posX,float posY,float width1,float height1,string text1);
+	void  draw() override;
+	void update() override;
 
 	bool isPressed(float mouseX,float mouseY);
 
