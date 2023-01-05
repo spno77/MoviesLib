@@ -5,16 +5,17 @@
 #include "config.h"
 #include "button.h"
 #include "movie.h"
+#include "interface.h"
 
 using namespace std;
 
 // Global variables for test purposes
-Button bt2;
-Movie movie("pio",1212,"asdasd","asda","asdsd" );
+//Button bt2;
+//Movie movie("pio",1212,"asdasd","asda","asdsd" );
 bool test = false;
-list<Movie *> movieList;
+//list<Movie *> movieList;
 
-
+//Update function
 void update(float ms)
 {
  	graphics::MouseState mouse;
@@ -23,43 +24,30 @@ void update(float ms)
     float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
     float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
 
-	if(mouse.button_left_pressed && bt2.isPressed(xx,yy))
+	/*if(mouse.button_left_pressed && bt2.isPressed(xx,yy))
     {
      	test = true;
     } 
+    */
 }
  
-
+//Draw function.
 void draw()
 {
-//test
-    createMovieList(movieList);
-    auto mv = movieList.begin();
-
-    string title = (*mv)->getTitle();
-//////////////////////////////////////////////////////
-
-	graphics::Brush br;
- 	SETCOLOR(br.fill_color,0.0,0.1,0.1);
-
-    graphics::setFont("assets//FFF_Tusj.ttf");
- 	graphics::drawText(CANVAS_WIDTH/2 - 22,CANVAS_HEIGHT-72,8, "Movies", br);
-
- 	//Button bt;
- 	bt2.init(CANVAS_WIDTH/2,CANVAS_HEIGHT/2,12,5,"Search");
- 	bt2.draw();
-
- 	if(test == true){
- 		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT,13, title, br);
- 	}
+    Interface *movieInterface = Interface::getInstance();
+    movieInterface->draw();
 }
  
+
 int main()
 {
     graphics::createWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"MoviesLib");
 
-    graphics::setDrawFunction(draw);
-    graphics::setUpdateFunction(update);
+    //Create an Interface object and a pointer to it
+    Interface *movieInterface = new Interface();
+ 
+    graphics::setDrawFunction(draw);       // draw
+    graphics::setUpdateFunction(update);   // update
  
     graphics::setCanvasSize(CANVAS_WIDTH,CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);

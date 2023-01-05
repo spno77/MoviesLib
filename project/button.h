@@ -21,8 +21,8 @@ public:
 	~Button();
 
 	void  init(float posX,float posY,float width1,float height1,string text1);
-	void  draw() override;
-	void update() override;
+	void  draw()   override;
+	void  update() override;
 
 	bool isPressed(float mouseX,float mouseY);
 
