@@ -18,9 +18,7 @@ Interface::~Interface()
 
 // Initialization of Interface member varialbes(is done in constructor)
 void Interface::init()
-{
-	
-}
+{}
 
 //Draws a Movie Interface
 void Interface::draw()

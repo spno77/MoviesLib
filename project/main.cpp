@@ -9,16 +9,9 @@
 
 using namespace std;
 
-// Global variables for test purposes
-//Button bt2;
-//Movie movie("pio",1212,"asdasd","asda","asdsd" );
-bool test = false;
-//list<Movie *> movieList;
-
 //Update function
 void update(float ms)
-{
- 	
+{ 	
     Interface *movieInterface = Interface::getInstance();
     movieInterface->update(); 
 }
