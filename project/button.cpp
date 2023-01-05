@@ -28,7 +28,6 @@ void Button::update()
     float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
 
     /*if(mouse.button_left_pressed and isPressed()){
-
     }
     */
 }
@@ -49,7 +48,7 @@ void Button::draw()
 
 
 // Checks if mouse pointer is inside button surface
-bool Button::isPressed(float mouseX,float mouseY)
+bool Button::isInside(float mouseX,float mouseY)
 {
 	if (positionX - (width/2) <= mouseX && mouseX <= positionX + (width/2))
 		if (positionY - (height/2) <= mouseY && mouseY <= positionY + (height/2))
@@ -68,8 +67,12 @@ void  Button::setPositionY(float positionY1) { positionY = positionY1; }
 
 //width getter/setter
 float Button::getWidth() { return width; }
-void  Button::setWidth(float width1) {width = width1; }
+void  Button::setWidth(float width1) { width = width1; }
 
 //height getter/setter
 float Button::getHeight(){ return height; }
-void  Button::setHeight(float height1){height = height1 ;}
+void  Button::setHeight(float height1){ height = height1 ;}
+
+//isClicked getter/setter
+bool Button::getIsClicked(){ return isClicked; }
+void Button::setIsClicked(bool isClicked1){ isClicked = isClicked1 ;}

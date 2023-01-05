@@ -18,17 +18,9 @@ bool test = false;
 //Update function
 void update(float ms)
 {
- 	graphics::MouseState mouse;
-    getMouseState(mouse);
-
-    float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
-    float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
-
-	/*if(mouse.button_left_pressed && bt2.isPressed(xx,yy))
-    {
-     	test = true;
-    } 
-    */
+ 	
+    Interface *movieInterface = Interface::getInstance();
+    movieInterface->update(); 
 }
  
 //Draw function.

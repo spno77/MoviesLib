@@ -12,19 +12,21 @@ using namespace std;
 //class Button is a derived class of Widget abstract class
 class Button: public Widget
 {
-	float positionX,positionY;   // x,y coordinates of Button's center    
+	float positionX,positionY;   // Button's center x,y coordinates    
 	float width, height;		 //	Button's width and height
 	string text;				 // Text written inside the button surface				
+	bool isClicked = false;		 // Button by default is not clicked
 
 public:
-	Button();
-	~Button();
+	Button();					 //	Button's Constructor 
+	~Button();					 //	Button's Destructor
 
 	void  init(float posX,float posY,float width1,float height1,string text1);
 	void  draw()   override;
 	void  update() override;
 
-	bool isPressed(float mouseX,float mouseY);
+	//checks if mouse is inside buttons surface
+	bool  isInside(float mouseX,float mouseY);
 
 	//positionX
 	float getPositionX();
@@ -42,4 +44,7 @@ public:
 	float getHeight();
 	void  setHeight(float height1);
 
+	//isClicked getter/setter
+	bool getIsClicked();
+	void setIsClicked(bool isClicked1);
 };

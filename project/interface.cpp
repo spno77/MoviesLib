@@ -31,12 +31,27 @@ void Interface::draw()
     graphics::setFont("assets//FFF_Tusj.ttf");
  	graphics::drawText(CANVAS_WIDTH/2 - 22,CANVAS_HEIGHT-74,8, "Movies", br);
 
- 	button.draw();	
+ 	button.draw();
+
+ 	if (button.getIsClicked() == true)
+ 	{
+ 		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT-35,10, "YEAS", br);	
+ 	}	
 }
 
 void Interface::update()
 {
-	
+	graphics::MouseState mouse;
+    getMouseState(mouse);
+
+    float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
+    float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
+
+	if(mouse.button_left_pressed && button.isInside(xx,yy))
+    {
+     	button.setIsClicked(true);
+    } 
+    
 }
 
 
