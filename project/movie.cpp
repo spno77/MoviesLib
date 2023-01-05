@@ -28,10 +28,9 @@ void    Movie::setStars(string stars1) { stars = stars1; }
 string  Movie::getGenre() { return genre; }
 void    Movie::setGenre(string genre1) { genre = genre1; }
 
-// Creates a List with pointers to Movie objects
+// Populates the list with Movie objects
 void createMovieList(list<Movie *> &movieList)
 {	
-
 	Movie *movie = new Movie("Fight Club",1999,"David Fincher","Brad Pitt,Edward Norton,Meat Loaf","action,thiller");
     movieList.push_back(movie);
 
@@ -42,6 +41,9 @@ void createMovieList(list<Movie *> &movieList)
 	movieList.push_back(movie);
 
 	movie = new Movie("Athena",2022,"Romain Gavras","Dali Banssalah,Sami Slimate","drama");
+	movieList.push_back(movie);
+
+	movie = new Movie("Ant-man",2015,"Peyton Reed","Paul Rudd,Michael Douglas,Corey Stoll","action,comedy");
 	movieList.push_back(movie);
 }
 

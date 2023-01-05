@@ -44,3 +44,4 @@ void createMovieList(list<Movie *> &movieList);
 
 // Destroys all objects of the List and cleares it
 void destroyList(list<Movie *> &movieList);
+

@@ -1,3 +1,5 @@
+#include <iterator>
+#include <list>
 #include "interface.h"
 
 Interface* Interface::m_instance = nullptr;
@@ -6,7 +8,7 @@ Interface* Interface::m_instance = nullptr;
 Interface::Interface()
 {
 	createMovieList(movieList);
-	button.init(CANVAS_WIDTH/2,CANVAS_HEIGHT/2,12,5,"Search");
+	button.init(CANVAS_WIDTH/2,CANVAS_HEIGHT-10,12,5,"Search");
 }
 
 // Interface Destructor
@@ -31,6 +33,21 @@ void Interface::draw()
 
  	button.draw();
 
+ 	float i = 0.0;
+ 	for (auto movie : movieList)
+	{
+		SETCOLOR(br.fill_color,1.0,1.0,1.0);
+		//graphics::Brush br;
+		br.texture = "assets//joker.png";
+		graphics::drawRect(30+i,30,20,40,br);
+
+		i += 22;
+	}
+	
+
+	//graphics::drawRect(20,40,20,60,br);
+
+
  	if (button.getIsClicked() == true)
  	{
  		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT-35,10, "YEAS", br);	
@@ -51,7 +68,6 @@ void Interface::update()
     } 
     
 }
-
 
 Interface* Interface::getInstance() {
 	if (m_instance == nullptr) {
