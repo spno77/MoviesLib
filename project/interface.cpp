@@ -32,20 +32,22 @@ void Interface::draw()
  	graphics::drawText(CANVAS_WIDTH/2 - 22,CANVAS_HEIGHT-74,8, "Movies", br);
 
  	button.draw();
+ 	
+ 	RectWidget rect;
+ 	rect.init(CANVAS_WIDTH/3,CANVAS_HEIGHT-15,12,5);
+ 	rect.draw();
 
  	float i = 0.0;
  	for (auto movie : movieList)
 	{
 		SETCOLOR(br.fill_color,1.0,1.0,1.0);
+		br.outline_opacity = 0.0f;
 		br.texture = "assets//joker.png";
 		graphics::drawRect(30+i,30,20,40,br);
-
+		
 		i += 22;
 	}
 	
-
-	//graphics::drawRect(20,40,20,60,br);
-
 
  	if (button.getIsClicked() == true)
  	{

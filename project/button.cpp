@@ -1,15 +1,15 @@
 #include "button.h"
 
-// Button Constructor
+// Button's Constructor
 Button::Button()
 {}
 
-// Button Destructor
+// Button's Destructor
 Button::~Button()
 {}
 
 
-//initialize Button memmber variables
+//initialize Button member variables
 void Button::init(float posX,float posY,float width1,float height1,string text1)
 {
 	positionX = posX; 
@@ -22,7 +22,7 @@ void Button::init(float posX,float posY,float width1,float height1,string text1)
 void Button::update()
 {}
 
-// Draws a button in the screen
+// Draws a Button in the screen
 void Button::draw()
 {
 	graphics::Brush br;
@@ -36,7 +36,6 @@ void Button::draw()
     graphics::drawText(positionX-5.5,positionY+1,4,text, br);
 }
 
-
 // Checks if mouse pointer is inside button surface
 bool Button::isInside(float mouseX,float mouseY)
 {
@@ -47,22 +46,7 @@ bool Button::isInside(float mouseX,float mouseY)
 	return false;
 }
 
-//positionX getter/setter
-float Button::getPositionX() { return positionX;}
-void  Button::setPositionX(float positionX1) { positionX = positionX1; }
 
-//positionY getter/setter
-float Button::getPositionY() { return positionY; }
-void  Button::setPositionY(float positionY1) { positionY = positionY1; }
-
-//width getter/setter
-float Button::getWidth() { return width; }
-void  Button::setWidth(float width1) { width = width1; }
-
-//height getter/setter
-float Button::getHeight(){ return height; }
-void  Button::setHeight(float height1){ height = height1 ;}
-
-//isClicked getter/setter
-bool Button::getIsClicked(){ return isClicked; }
-void Button::setIsClicked(bool isClicked1){ isClicked = isClicked1 ;}
+//text getter/setter
+string Button::getText(){ return text;}
+void   Button::setText(string text1){ text = text1;}
