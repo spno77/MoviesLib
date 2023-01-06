@@ -39,9 +39,9 @@ public:
 	string getGenre();
 	void   setGenre(string genre1);
 
-	//Genre
-	string getMoviePath();
-	void   setMoviePath(string genre1);
+	//Poster
+	string getPosterPath();
+	void   setPosterPath(string path);
 };
 
 // creates a List with pointers to Movie objects

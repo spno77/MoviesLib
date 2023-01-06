@@ -51,7 +51,11 @@ void Interface::draw()
 		
 		i += 22;
 		*/
-		//img.draw();
+
+		Image img;
+		img.init(movie->getPosterPath(),30+i,59,20,30);
+		i += 22;
+		img.draw();
 
 	}
 	
