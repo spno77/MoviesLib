@@ -19,6 +19,14 @@ void update(float ms)
 //Draw function.
 void draw()
 {
+    graphics::Brush br;
+    SETCOLOR(br.fill_color,1.0,1.0,1.0);
+    br.texture = "assets//blue.png";
+    br.outline_opacity = 0.0f;
+
+    graphics::drawRect(CANVAS_WIDTH/2,CANVAS_HEIGHT/2,CANVAS_WIDTH,CANVAS_HEIGHT,br);
+    graphics::setWindowBackground(br);
+
     Interface *movieInterface = Interface::getInstance();
     movieInterface->draw();
 }
@@ -28,7 +36,7 @@ int main()
 {
     graphics::createWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"MoviesLib");
 
-    //Create an Interface object and a pointer to it
+    //Creates an Interface object and a pointer to it
     Interface *movieInterface = new Interface();
  
     graphics::setDrawFunction(draw);       // draw
@@ -37,12 +45,6 @@ int main()
     graphics::setCanvasSize(CANVAS_WIDTH,CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
     
-    graphics::Brush br;
-
- 	SETCOLOR(br.fill_color,0.4,0.3,0.8);
-    
-    graphics::setWindowBackground(br);
-
     graphics::startMessageLoop();
  
     return 0;

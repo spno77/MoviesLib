@@ -37,7 +37,6 @@ void Interface::draw()
  	for (auto movie : movieList)
 	{
 		SETCOLOR(br.fill_color,1.0,1.0,1.0);
-		//graphics::Brush br;
 		br.texture = "assets//joker.png";
 		graphics::drawRect(30+i,30,20,40,br);
 

@@ -20,17 +20,7 @@ void Button::init(float posX,float posY,float width1,float height1,string text1)
 }
 
 void Button::update()
-{
-	graphics::MouseState mouse;
-    getMouseState(mouse);
-
-    float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
-    float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
-
-    /*if(mouse.button_left_pressed and isPressed()){
-    }
-    */
-}
+{}
 
 // Draws a button in the screen
 void Button::draw()
