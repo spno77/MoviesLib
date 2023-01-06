@@ -24,7 +24,7 @@ public:
 	void  update() override;
 
 	//checks if mouse is inside rectWidgets surface
-	bool  isInside(float mouseX,float mouseY);
+	//bool  isInside(float mouseX,float mouseY);
 
 	//positionX
 	float getPositionX();

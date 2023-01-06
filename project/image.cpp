@@ -27,12 +27,17 @@ void Image::update()
 void Image::draw()
 {
 	graphics::Brush br;
-	br.outline_opacity = 0.0f;
+	float h = 1.0f * m_highlighted;
+    SETCOLOR(br.fill_color,h,h,h);
+    br.outline_opacity = 1.0f * (m_active);
+	//graphics::drawRect(positionX,positionY,width * 1.5,height * 1.5, br);
+
 	SETCOLOR(br.fill_color,1.0,1.0,1.0);
 	br.texture = path; 
     graphics::drawRect(positionX,positionY,width,height,br);
-
+    
 }
+
 
 // Checks if mouse pointer is inside button surface
 bool Image::isInside(float mouseX,float mouseY)
@@ -48,3 +53,7 @@ bool Image::isInside(float mouseX,float mouseY)
 //text getter/setter
 string Image::getPath(){ return path;}
 void   Image::setPath(string path1){ path = path1;}
+
+// setters for highllighted and active bool variables
+void Image::setHighlight(bool highlight) { m_highlighted = highlight; }
+void Image::setActive(bool active) { m_active = active; }

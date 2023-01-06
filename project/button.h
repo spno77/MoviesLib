@@ -16,7 +16,7 @@ class Button: public RectWidget
 	float positionX,positionY;   // Button's center x,y coordinates    
 	float width, height;		 //	Button's width and height
 	string text;				 // Text written inside the button surface				
-	bool isClicked = false;		 // Button by default is not clicked
+	//bool isClicked = false;		 // Button by default is not clicked
 						
 public:
 	Button();					 //	Button's Constructor 

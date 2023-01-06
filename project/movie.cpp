@@ -65,3 +65,17 @@ void destroyList(list<Movie *> &movieList)
 	//clear the list
 	movieList.clear();
 }
+
+
+Movie* searchList(list<Movie *> &movieList,string posterPath)
+{
+	for (auto movie: movieList)
+	{
+		if (movie->getPosterPath() == posterPath)
+		{
+			return movie;
+		}
+	}
+
+	return nullptr;
+}

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sgg/graphics.h>
 #include <string>
+#include <vector>
 
 #include "config.h"
 #include "widget.h"
@@ -16,6 +17,10 @@ using namespace std;
 class Interface: public Widget{
 
 	list<Movie *> movieList;
+	list<Image *> imageList;
+	//vector<Image *> imageList;
+	Image *currentImage = nullptr;
+	Movie *currentMovie = nullptr;
 	Button button;
 
 protected:

@@ -36,6 +36,7 @@ void Button::draw()
     graphics::drawText(positionX-5.5,positionY+1,4,text, br);
 }
 
+
 // Checks if mouse pointer is inside button surface
 bool Button::isInside(float mouseX,float mouseY)
 {

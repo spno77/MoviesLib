@@ -49,3 +49,6 @@ void createMovieList(list<Movie *> &movieList);
 
 // Destroys all objects of the List and cleares it
 void destroyList(list<Movie *> &movieList);
+
+//search Movie
+Movie* searchList(list<Movie *> &movieList,string posterPath);

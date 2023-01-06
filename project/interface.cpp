@@ -17,7 +17,6 @@ Interface::~Interface()
 	destroyList(movieList); 
 }
 
-
 // Initialization of Interface member varialbes(is done in constructor)
 void Interface::init()
 {}
@@ -36,16 +35,23 @@ void Interface::draw()
  	float i = 0.0;
  	for (auto movie : movieList)
 	{
-		Image img;
-		img.init(movie->getPosterPath(),20+i,CANVAS_HEIGHT-58,23,33);
+		Image *img = new Image;
+		img->init(movie->getPosterPath(),20+i,CANVAS_HEIGHT-58,23,33);
+		imageList.push_back(img);
 		i += 25;
-		img.draw();
+		img->draw();
 	}
 	
- 	if (button.getIsClicked() == true)
- 	{
- 		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT-30,10, "YEAS", br);	
- 	}	
+
+	for (auto image : imageList)
+	{
+		if (image->getIsClicked() == true)
+		{
+			currentMovie = searchList(movieList,image->getPath());
+			graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT-30,10,currentMovie->getTitle(), br);	
+		}
+	}
+
 }
 
 void Interface::update()
@@ -59,8 +65,17 @@ void Interface::update()
 	if(mouse.button_left_pressed && button.isInside(xx,yy))
     {
      	button.setIsClicked(true);
-    } 
-    
+    }
+
+    //if mouse is inside a certain image make that current
+    for (auto image : imageList)
+    {
+    	if(mouse.button_left_pressed && image->isInside(xx,yy))
+    	{
+     		currentImage = image;
+     		currentImage->setIsClicked(true);
+    	}
+    }
 }
 
 Interface* Interface::getInstance() {
