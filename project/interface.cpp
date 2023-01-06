@@ -37,17 +37,25 @@ void Interface::draw()
  	rect.init(CANVAS_WIDTH/3,CANVAS_HEIGHT-15,12,5);
  	rect.draw();
 
+ 	Image img;
+ 	string path = "assets//joker.png";
+ 	img.init(path,CANVAS_WIDTH-34,59,20,30);
+
  	float i = 0.0;
  	for (auto movie : movieList)
 	{
-		SETCOLOR(br.fill_color,1.0,1.0,1.0);
+		/*SETCOLOR(br.fill_color,1.0,1.0,1.0);
 		br.outline_opacity = 0.0f;
 		br.texture = "assets//joker.png";
 		graphics::drawRect(30+i,30,20,40,br);
 		
 		i += 22;
+		*/
+		//img.draw();
+
 	}
 	
+	img.draw();
 
  	if (button.getIsClicked() == true)
  	{

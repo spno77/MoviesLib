@@ -41,10 +41,10 @@ int main()
  
     graphics::setDrawFunction(draw);       // draw
     graphics::setUpdateFunction(update);   // update
- 
+    
     graphics::setCanvasSize(CANVAS_WIDTH,CANVAS_HEIGHT);
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
-    
+      
     graphics::startMessageLoop();
  
     return 0;

@@ -11,9 +11,9 @@ using namespace std;
 
 class RectWidget: public Widget
 {
-	float positionX,positionY;   // Button's center x,y coordinates    
-	float width, height;		 //	Button's width and height				
-	bool isClicked = false;		 // Button by default is not clicked
+	float positionX,positionY;   // RectWidget's center x,y coordinates    
+	float width, height;		 //	RectWidget's width and height				
+	bool isClicked = false;		 // RectWidget by default is not clicked
 
 public:
 	RectWidget();
@@ -23,7 +23,7 @@ public:
 	void  draw()   override;
 	void  update() override;
 
-	//checks if mouse is inside buttons surface
+	//checks if mouse is inside rectWidgets surface
 	bool  isInside(float mouseX,float mouseY);
 
 	//positionX

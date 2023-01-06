@@ -9,14 +9,15 @@ using namespace std;
 
 class Movie
 {
-	string title;
+	string title;		
 	int    year;
 	string directors;
 	string stars;
 	string genre;
+	string posterPath;
 
 public:
-	Movie(string title1,int year1,string directors1,string stars1,string genre1);
+	Movie(string title1,int year1,string directors1,string stars1,string genre1,string path);
 	~Movie();
 
 	string getTitle();
@@ -37,6 +38,10 @@ public:
 	//Genre
 	string getGenre();
 	void   setGenre(string genre1);
+
+	//Genre
+	string getMoviePath();
+	void   setMoviePath(string genre1);
 };
 
 // creates a List with pointers to Movie objects
@@ -44,4 +49,3 @@ void createMovieList(list<Movie *> &movieList);
 
 // Destroys all objects of the List and cleares it
 void destroyList(list<Movie *> &movieList);
-

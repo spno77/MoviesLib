@@ -8,6 +8,7 @@
 #include "widget.h"
 #include "movie.h"
 #include "button.h"
+#include "image.h"
 
 using namespace std;
 
