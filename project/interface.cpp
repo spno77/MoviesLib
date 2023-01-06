@@ -29,41 +29,22 @@ void Interface::draw()
  	SETCOLOR(br.fill_color,0.0,0.1,0.1);
 
     graphics::setFont("assets//FFF_Tusj.ttf");
- 	graphics::drawText(CANVAS_WIDTH/2 - 22,CANVAS_HEIGHT-74,8, "Movies", br);
+ 	graphics::drawText(CANVAS_WIDTH/2 - 11,CANVAS_HEIGHT-76,5, "Movies", br);
 
  	button.draw();
- 	
- 	RectWidget rect;
- 	rect.init(CANVAS_WIDTH/3,CANVAS_HEIGHT-15,12,5);
- 	rect.draw();
-
- 	Image img;
- 	string path = "assets//joker.png";
- 	img.init(path,CANVAS_WIDTH-34,59,20,30);
-
+	
  	float i = 0.0;
  	for (auto movie : movieList)
 	{
-		/*SETCOLOR(br.fill_color,1.0,1.0,1.0);
-		br.outline_opacity = 0.0f;
-		br.texture = "assets//joker.png";
-		graphics::drawRect(30+i,30,20,40,br);
-		
-		i += 22;
-		*/
-
 		Image img;
-		img.init(movie->getPosterPath(),30+i,59,20,30);
-		i += 22;
+		img.init(movie->getPosterPath(),20+i,CANVAS_HEIGHT-58,23,33);
+		i += 25;
 		img.draw();
-
 	}
 	
-	img.draw();
-
  	if (button.getIsClicked() == true)
  	{
- 		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT-35,10, "YEAS", br);	
+ 		graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT-30,10, "YEAS", br);	
  	}	
 }
 

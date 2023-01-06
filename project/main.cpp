@@ -21,7 +21,7 @@ void draw()
 {
     graphics::Brush br;
     SETCOLOR(br.fill_color,1.0,1.0,1.0);
-    br.texture = "assets//blue.png";
+    br.texture = "assets//purple.png";
     br.outline_opacity = 0.0f;
 
     graphics::drawRect(CANVAS_WIDTH/2,CANVAS_HEIGHT/2,CANVAS_WIDTH,CANVAS_HEIGHT,br);
@@ -31,7 +31,6 @@ void draw()
     movieInterface->draw();
 }
  
-
 int main()
 {
     graphics::createWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"MoviesLib");
