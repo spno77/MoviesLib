@@ -2,7 +2,8 @@
 #include "image.h"
 
 // Image's Constructor
-Image::Image()
+Image::Image(string path1,float posX,float posY,float width1,float height1):
+path(path1),RectWidget(posX,posY,width1,height1) 
 {}
 
 // Image's Destructor
@@ -11,14 +12,8 @@ Image::~Image()
 
 
 //initialize Image member variables
-void Image::init(string path1,float posX,float posY,float width1,float height1)
-{
-	path 	  = path1;
-	positionX = posX; 
-	positionY = posY;   
-	width     = width1;
-	height    = height1;	
-}
+void Image::init()
+{}
 
 void Image::update()
 {}
@@ -40,7 +35,7 @@ void Image::draw()
 
 
 // Checks if mouse pointer is inside button surface
-bool Image::isInside(float mouseX,float mouseY)
+/*bool Image::isInside(float mouseX,float mouseY)
 {
 	if (positionX - (width/2) <= mouseX && mouseX <= positionX + (width/2))
 		if (positionY - (height/2) <= mouseY && mouseY <= positionY + (height/2))
@@ -48,7 +43,7 @@ bool Image::isInside(float mouseX,float mouseY)
 
 	return false;
 }
-
+*/
 
 //text getter/setter
 string Image::getPath(){ return path;}

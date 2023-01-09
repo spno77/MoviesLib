@@ -1,19 +1,15 @@
 #include "rectWidget.h"
 
-RectWidget::RectWidget()
+RectWidget::RectWidget(float posX,float posY,float width1,float height1):
+positionX(posX),positionY(posY),width(width1),height(height1)
 {}
 
 RectWidget::~RectWidget()
 {}
 
 //initialize RectWidget member variables
-void RectWidget::init(float posX,float posY,float width1,float height1)
-{
-	positionX = posX; 
-	positionY = posY;   
-	width     = width1;
-	height    = height1;	
-}
+void RectWidget::init()
+{}
 
 void RectWidget::update()
 {}
@@ -28,7 +24,7 @@ void RectWidget::draw()
     graphics::drawRect(positionX,positionY,width,height,br);
 }
 
-/*
+
 // Checks if mouse pointer is inside button surface
 bool RectWidget::isInside(float mouseX,float mouseY)
 {
@@ -38,7 +34,6 @@ bool RectWidget::isInside(float mouseX,float mouseY)
 
 	return false;
 }
-*/
 
 //positionX getter/setter
 float RectWidget::getPositionX() { return positionX;}

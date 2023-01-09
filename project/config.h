@@ -1,7 +1,7 @@
 #pragma once 
 
-//define asset path
-#define ASSET_PATH   "assets/"
+//asset path(Linux format)
+#define ASSET_PATH "assets/"
 
 //Window width and height
 #define WINDOW_WIDTH   1200
