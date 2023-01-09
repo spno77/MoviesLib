@@ -9,12 +9,12 @@ using namespace std;
 
 class Movie
 {
-	string title;		
-	int    year;
-	string directors;
-	string stars;
-	string genre;
-	string posterPath;
+	string title;			// Movie's title
+	int    year;			// Year of production	
+	string directors;		// Directors
+	string stars;			// Stars
+	string genre;			// Movie genre
+	string posterPath;		// Movies poster path
 
 public:
 	Movie(string title1,int year1,string directors1,string stars1,string genre1,string path);
@@ -50,5 +50,5 @@ void createMovieList(list<Movie *> &movieList);
 // Destroys all objects of the List and cleares it
 void destroyList(list<Movie *> &movieList);
 
-//search Movie
+//get Movie from the list
 Movie* searchList(list<Movie *> &movieList,string posterPath);

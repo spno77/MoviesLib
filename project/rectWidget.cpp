@@ -7,7 +7,6 @@ positionX(posX),positionY(posY),width(width1),height(height1)
 RectWidget::~RectWidget()
 {}
 
-//initialize RectWidget member variables
 void RectWidget::init()
 {}
 

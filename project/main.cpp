@@ -35,7 +35,6 @@ int main()
 {
     graphics::createWindow(WINDOW_WIDTH,WINDOW_HEIGHT,"MoviesLib");
 
-    //Creates an Interface object and a pointer to it
     Interface *movieInterface = new Interface();
  
     graphics::setDrawFunction(draw);       // draw

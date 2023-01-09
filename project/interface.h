@@ -18,7 +18,6 @@ class Interface: public Widget{
 
 	list<Movie *> movieList;
 	list<Image *> imageList;
-	//vector<Image *> imageList;
 	Image *currentImage = nullptr;
 	Movie *currentMovie = nullptr;
 	Button *button;
@@ -27,7 +26,6 @@ protected:
 	static Interface* m_instance;
 
 public:
-
 	Interface();
 	~Interface();
 

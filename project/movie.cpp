@@ -1,5 +1,6 @@
 #include "movie.h"
 #include "config.h"
+
 // Movie constructor
 Movie::Movie(string title1,int year1,string directors1,string stars1,string genre1,string poster)
 :title(title1),year(year1),directors(directors1),stars(stars1),genre(genre1),posterPath(poster)
@@ -56,17 +57,15 @@ void createMovieList(list<Movie *> &movieList)
 // Destroys all objects of the List and cleares it
 void destroyList(list<Movie *> &movieList)
 {
-	
 	for (auto movie : movieList)
 	{
 		delete movie;
 	}
-
 	//clear the list
 	movieList.clear();
 }
 
-
+// Search for a movie in the list given the posterPath
 Movie* searchList(list<Movie *> &movieList,string posterPath)
 {
 	for (auto movie: movieList)
@@ -76,6 +75,5 @@ Movie* searchList(list<Movie *> &movieList,string posterPath)
 			return movie;
 		}
 	}
-
 	return nullptr;
 }

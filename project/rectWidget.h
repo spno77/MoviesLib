@@ -9,7 +9,8 @@
 
 using namespace std;
 
-//Rectangular Widget class(All rectangular widgets will use this as base class)
+//Rectangular Widget class
+//(All rectangular widgets will use this as base class)
 class RectWidget: public Widget
 {
 
@@ -19,11 +20,10 @@ protected:
 	bool  isClicked = false;	 // RectWidget by default is not clicked
 
 public:
-	//RectWidget();
 	RectWidget(float posX,float posY,float width1,float height1);
 	~RectWidget();
 
-	void  init();
+	void  init()   override;
 	void  draw()   override;
 	void  update() override;
 

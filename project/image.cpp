@@ -10,8 +10,6 @@ path(path1),RectWidget(posX,posY,width1,height1)
 Image::~Image()
 {}
 
-
-//initialize Image member variables
 void Image::init()
 {}
 
@@ -25,27 +23,13 @@ void Image::draw()
 	float h = 1.0f * m_highlighted;
     SETCOLOR(br.fill_color,h,h,h);
     br.outline_opacity = 1.0f * (m_active);
-	//graphics::drawRect(positionX,positionY,width * 1.5,height * 1.5, br);
-
+	
 	SETCOLOR(br.fill_color,1.0,1.0,1.0);
 	br.texture = path; 
     graphics::drawRect(positionX,positionY,width,height,br);
-    
 }
 
-
-// Checks if mouse pointer is inside button surface
-/*bool Image::isInside(float mouseX,float mouseY)
-{
-	if (positionX - (width/2) <= mouseX && mouseX <= positionX + (width/2))
-		if (positionY - (height/2) <= mouseY && mouseY <= positionY + (height/2))
-			return true;
-
-	return false;
-}
-*/
-
-//text getter/setter
+//path getter/setter
 string Image::getPath(){ return path;}
 void   Image::setPath(string path1){ path = path1;}
 
