@@ -42,13 +42,13 @@ void Interface::draw()
 		i += 25;
 		img->draw();
 	}
-		
+	
 	for (auto image : imageList)
 	{
 		if (image->getIsClicked() == true)
 		{	
 			currentMovie = searchList(movieList,image->getPath());
-			graphics::drawText(8.0,CANVAS_HEIGHT-30,10,currentMovie->getTitle(), br);
+			graphics::drawText(8.0,CANVAS_HEIGHT-26,6,currentMovie->getTitle(), br);
 		}
 	}	
 }

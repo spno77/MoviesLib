@@ -44,6 +44,8 @@ int main()
     graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
       
     graphics::startMessageLoop();
+
+    delete movieInterface;
  
     return 0;
 }

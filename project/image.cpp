@@ -33,7 +33,7 @@ void Image::draw()
 string Image::getPath(){ return path;}
 void   Image::setPath(string path1){ path = path1;}
 
-// setters for highllighted and active bool variables
+// setters for highlighted and active bool variables
 void Image::setHighlight(bool highlight) { m_highlighted = highlight; }
 void Image::setActive(bool active) { m_active = active; }
 bool Image::getActive(){return m_active;}
