@@ -1,9 +1,11 @@
 #include "rectWidget.h"
 
+// RectWidget constructor
 RectWidget::RectWidget(float posX,float posY,float width1,float height1):
 positionX(posX),positionY(posY),width(width1),height(height1)
 {}
 
+// RectWidget destructor
 RectWidget::~RectWidget()
 {}
 
@@ -13,7 +15,7 @@ void RectWidget::init()
 void RectWidget::update()
 {}
 
-// Draws a button in the screen
+// Draws a RectWidget in the screen
 void RectWidget::draw()
 {
 	graphics::Brush br;

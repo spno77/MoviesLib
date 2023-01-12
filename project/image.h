@@ -28,5 +28,7 @@ public:
 
 	//Setters for highllighted and active bool variables
 	void setHighlight(bool highlight); 
+	
 	void setActive(bool active); 
+	bool getActive();
 };

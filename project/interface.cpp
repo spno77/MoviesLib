@@ -32,6 +32,7 @@ void Interface::draw()
  	graphics::drawText(CANVAS_WIDTH/2 - 11,CANVAS_HEIGHT-76,5, "Movies", br);
 
  	button->draw();
+ 
 	
  	float i = 0.0;
  	for (auto movie : movieList)
@@ -41,40 +42,43 @@ void Interface::draw()
 		i += 25;
 		img->draw();
 	}
-	
+		
 	for (auto image : imageList)
 	{
 		if (image->getIsClicked() == true)
 		{	
 			currentMovie = searchList(movieList,image->getPath());
-			graphics::drawText(CANVAS_WIDTH/2,CANVAS_HEIGHT-30,10,currentMovie->getTitle(), br);	
-			graphics::resetPose();
+			graphics::drawText(8.0,CANVAS_HEIGHT-30,10,currentMovie->getTitle(), br);
 		}
-	}
+	}	
 }
 
 void Interface::update()
 {
+	
 	graphics::MouseState mouse;
     getMouseState(mouse);
 
     float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
     float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
-
-	if(mouse.button_left_pressed && button->isInside(xx,yy))
+    	
+    if(mouse.button_left_pressed)
     {
-     	button->setIsClicked(true);
-    }
-
-    //if mouse is inside a certain image make that current
-    for (auto image : imageList)
-    {
-    	if(mouse.button_left_pressed && image->isInside(xx,yy))
+    	for (auto image : imageList)
     	{
-     		currentImage = image;
-     		currentImage->setIsClicked(true);
+    		if (image->isInside(xx,yy))
+    		{		
+    	 		image->setIsClicked(true);
+    		}
+    		else
+    		{
+    			image->setIsClicked(false);
+    		}
+    		
+    		
     	}
     }
+    		
 }
 
 Interface* Interface::getInstance() {

@@ -16,20 +16,27 @@ using namespace std;
 //MovieLib interface inherits from base class Widget
 class Interface: public Widget{
 
-	list<Movie *> movieList;
-	list<Image *> imageList;
-	Image *currentImage = nullptr;
-	Movie *currentMovie = nullptr;
-	Button *button;
+public:
+	enum interfaceState{STATE_INIT,STATE_CLICKED};  
+
+private:	
+	list<Movie *> movieList;			// List with pointers to Movie objects
+	list<Image *> imageList;			// List with pointers to Image objects
+	Image *currentImage = nullptr;		// Image  pointer 
+	Movie *currentMovie = nullptr;		// Movie  pointer
+	Button *button 		= nullptr;		// Button pointer
 
 protected:
 	static Interface* m_instance;
+	interfaceState state = STATE_INIT;
 
 public:
-	Interface();
-	~Interface();
 
-	void  init();
+	Interface();						//Interface constructor
+	~Interface();						//Interface destructor
+
+	//overriden methods from base abstract class Widget
+	void  init()   override;
     void  draw()   override;
 	void  update() override;
 
