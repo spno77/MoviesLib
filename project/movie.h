@@ -42,6 +42,7 @@ public:
 	//Poster
 	string getPosterPath();
 	void   setPosterPath(string path);
+
 };
 
 // creates a List with pointers to Movie objects

@@ -43,4 +43,5 @@ public:
 
 	static void releaseInstance();
 	static Interface* getInstance();
+
 };
