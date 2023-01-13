@@ -1,6 +1,7 @@
 #include <iterator>
 #include <list>
 #include "interface.h"
+#include <unistd.h>
 
 Interface* Interface::m_instance = nullptr;
 
@@ -9,13 +10,16 @@ Interface::Interface()
 {
 	createMovieList(movieList);
 	button = new Button(CANVAS_WIDTH/2,CANVAS_HEIGHT-10,12,5,"Search");
+	info   = new Button(50,46,8,5,"Info");
+
 }
 
 //Interface Destructor
 Interface::~Interface()
 {
 	destroyList(movieList);
-	delete button; 
+	delete button;
+	delete info; 
 }
 
 //Initialization of Interface member varialbes(is done in constructor)
@@ -33,24 +37,44 @@ void Interface::draw()
 
  	button->draw();
  
-	
  	float i = 0.0;
  	for (auto movie : movieList)
 	{
-		Image *img = new Image(movie->getPosterPath(),20+i,CANVAS_HEIGHT-58,23,33);
+		Image *img = new Image(movie->getPosterPath(),20+i,22,23,33);
 		imageList.push_back(img);
 		i += 25;
 		img->draw();
 	}
-	
-	for (auto image : imageList)
+
+	if (state == STATE_CLICKED)
 	{
-		if (image->getIsClicked() == true)
-		{	
-			currentMovie = searchList(movieList,image->getPath());
-			graphics::drawText(8.0,CANVAS_HEIGHT-26,6,currentMovie->getTitle(), br);
-		}
-	}	
+		for (auto image : imageList)
+		{
+			if (image->getIsClicked() == true)
+			{	
+				currentMovie = searchList(movieList,image->getPath());
+			
+				//Draw movie title in the screen
+				graphics::drawText(8,50,6,currentMovie->getTitle(), br); 
+				info->draw();
+
+			/*
+				// Draw static strings in the screen
+				graphics::drawText(8,57,3,"Director :",br); 
+				graphics::drawText(8,61,3,"Stars :",br); 
+				graphics::drawText(8,65,3,"Genre :",br); 
+				graphics::drawText(8,69,3,"Year :",br); 
+
+				// Draw movie member variables in the scree				
+				graphics::drawText(30,57,3,currentMovie->getDirectors(),br); 
+				graphics::drawText(30,61,3,currentMovie->getStars(),br); 
+				graphics::drawText(30,65,3,currentMovie->getGenre(),br); 
+				graphics::drawText(30,69,3,to_string(currentMovie->getYear()),br); 
+			*/
+			}
+		}	
+	}
+
 }
 
 void Interface::update()
@@ -74,7 +98,8 @@ void Interface::update()
     		{
     			image->setIsClicked(false);
     		}
-    		
+    	
+    	state = STATE_CLICKED;
     		
     	}
     }

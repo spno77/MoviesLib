@@ -25,6 +25,7 @@ private:
 	Image *currentImage = nullptr;		// Image  pointer 
 	Movie *currentMovie = nullptr;		// Movie  pointer
 	Button *button 		= nullptr;		// Button pointer
+	Button *info		= nullptr;	
 
 protected:
 	static Interface* m_instance;

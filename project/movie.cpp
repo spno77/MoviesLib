@@ -38,19 +38,19 @@ void createMovieList(list<Movie *> &movieList)
 {	
 	string asset = string(ASSET_PATH);
 
-	Movie *movie = new Movie("Fight Club",1999,"David Fincher","Brad Pitt,Edward Norton,Meat Loaf","action,thiller",asset+"fightclub.png");
+	Movie *movie = new Movie("Fight Club",1999,"David Fincher","Brad Pitt,Edward Norton","thriller",asset+"fightclub.png");
     movieList.push_back(movie);
 
-    movie = new Movie("Joker",2019,"Todd Philips","Joaquin Phoenix,Robert De Niro","thiller,drama",asset+"joker.png");
+    movie = new Movie("Joker",2019,"Todd Philips","Joaquin Phoenix,Robert De Niro","thriller",asset+"joker.png");
     movieList.push_back(movie);
 
-    movie = new Movie("It",2017,"Andy Muschietti","Bill Skarsgard,Finn Wolfhard","horror,drama",asset+"it.png");
+    movie = new Movie("It",2017,"Andy Muschietti","Bill Skarsgard,Finn Wolfhard","horror",asset+"it.png");
 	movieList.push_back(movie);
 
 	movie = new Movie("Athena",2022,"Romain Gavras","Dali Banssalah,Sami Slimate","drama",asset+"athena.png");
 	movieList.push_back(movie);
 
-	movie = new Movie("Ant-man",2015,"Peyton Reed","Paul Rudd,Michael Douglas,Corey Stoll","action,comedy",asset+"antman.png");
+	movie = new Movie("Antman",2015,"Peyton Reed","Paul Rudd,Michael Douglas","action",asset+"antman.png");
 	movieList.push_back(movie);
 }
 
