@@ -55,10 +55,8 @@ void Interface::draw()
 				currentMovie = searchList(movieList,image->getPath());
 			
 				//Draw movie title in the screen
-				graphics::drawText(8,50,6,currentMovie->getTitle(), br); 
-				info->draw();
+				graphics::drawText(8,50,6,currentMovie->getTitle(), br);
 
-			/*
 				// Draw static strings in the screen
 				graphics::drawText(8,57,3,"Director :",br); 
 				graphics::drawText(8,61,3,"Stars :",br); 
@@ -69,12 +67,10 @@ void Interface::draw()
 				graphics::drawText(30,57,3,currentMovie->getDirectors(),br); 
 				graphics::drawText(30,61,3,currentMovie->getStars(),br); 
 				graphics::drawText(30,65,3,currentMovie->getGenre(),br); 
-				graphics::drawText(30,69,3,to_string(currentMovie->getYear()),br); 
-			*/
+				graphics::drawText(30,69,3,to_string(currentMovie->getYear()),br);	
 			}
-		}	
+		}		
 	}
-
 }
 
 void Interface::update()
@@ -85,9 +81,16 @@ void Interface::update()
 
     float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
     float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
-    	
+    
+    
+	
+
+
+
     if(mouse.button_left_pressed)
     {
+
+   
     	for (auto image : imageList)
     	{
     		if (image->isInside(xx,yy))
