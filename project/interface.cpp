@@ -123,7 +123,14 @@ void Interface::draw()
 		for(int i = 0; i < GENRE_NUM; i++){
 			genreButton[i]->draw();
 		}
-		
+
+		for (int i = 0; i < GENRE_NUM; ++i)
+		{
+			if (genreButton[i]->getIsClicked())
+			{
+				graphics::drawText(33,23,6,"Ssdfre:",br);
+			}
+		}
 		
 
 	}
@@ -162,6 +169,8 @@ void Interface::update()
     		if (button->isInside(xx,yy))
     		{
     			button->setIsClicked(true);
+    			state = STATE_FILTER;
+    			return;
     		}
     		else
     		{
@@ -192,6 +201,30 @@ void Interface::update()
 			//return;
  		}
 	}
+
+	if (state == STATE_FILTER)
+	{
+		if (mouse.button_left_pressed)
+		{
+			for (int i = 0; i < GENRE_NUM; ++i)
+			{
+				if (genreButton[i]->isInside(xx,yy))
+				{
+					genreButton[i]->setIsClicked(true);
+				}
+				else
+				{
+					genreButton[i]->setIsClicked(false);
+				}
+			}
+			
+		}
+		
+	}
+
+
+
+
 }   
 
 
