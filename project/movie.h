@@ -51,5 +51,13 @@ void createMovieList(list<Movie *> &movieList);
 // Destroys all objects of the List and cleares it
 void destroyList(list<Movie *> &movieList);
 
-//get Movie from the list
-Movie* searchList(list<Movie *> &movieList,string posterPath);
+// Get Movie from the list by posterPath
+Movie* searchListByPoster(list<Movie *> &movieList,string posterPath);
+
+// Get Movie from the list by genre
+Movie* searchListByGenre(list<Movie *> &movieList,string genre);
+
+// Get movie from the list by year of production
+Movie* searchListByYear(list<Movie *> &movieList,string posterPath);
+
+

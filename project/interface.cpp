@@ -87,7 +87,7 @@ void Interface::draw()
 
 			if (image->getIsClicked() == true)
 			{	
-				currentMovie = searchList(movieList,image->getPath());
+				currentMovie = searchListByPoster(movieList,image->getPath());
 				info->draw();
 
 				//Draw movie title in the screen

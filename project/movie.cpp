@@ -65,12 +65,38 @@ void destroyList(list<Movie *> &movieList)
 	movieList.clear();
 }
 
-// Search for a movie in the list given the posterPath
-Movie* searchList(list<Movie *> &movieList,string posterPath)
+// Search for a movie in the list by the posterPath
+Movie* searchListByPoster(list<Movie *> &movieList,string posterPath)
 {
 	for (auto movie: movieList)
 	{
 		if (movie->getPosterPath() == posterPath)
+		{
+			return movie;
+		}
+	}
+	return nullptr;
+}
+
+// Get Movie from the list by genre
+Movie* searchListByGenre(list<Movie *> &movieList,string genre)
+{
+	for (auto movie: movieList)
+	{
+		if (movie->getGenre() == genre)
+		{
+			return movie;
+		}
+	}
+	return nullptr;
+}
+
+// Get movie from the list by year of production
+Movie* searchListByYear(list<Movie *> &movieList,int year)
+{
+	for (auto movie: movieList)
+	{
+		if (movie->getYear() == year)
 		{
 			return movie;
 		}
