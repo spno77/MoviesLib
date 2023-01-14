@@ -77,28 +77,28 @@ void Interface::draw()
 
 				//Draw movie title in the screen
 				graphics::drawText(8,50,6,currentMovie->getTitle(), br);
-		
-			
-				// Draw movie member variables in the scree				
-				//graphics::drawText(8,57,3,/*"Director :"+*/ currentMovie->getDirectors(),br); 
-				//graphics::drawText(8,61,3,/*"Stars    :"+*/ currentMovie->getStars(),br); 
-				//graphics::drawText(8,65,3,/*"Genre    :"+*/ currentMovie->getGenre(),br); 
-				//graphics::drawText(8,69,3,/*"Year     :"+*/ to_string(currentMovie->getYear()),br); 
 			}
-
 
 			if (info->getIsClicked() == true)
 				{
+					//Draw movie title in the screen
 					graphics::drawText(8,50,6,currentMovie->getTitle(), br);
-					graphics::drawText(8,57,3,"Director :"+ currentMovie->getDirectors(),br); 
-					graphics::drawText(8,61,3,"Stars    :"+ currentMovie->getStars(),br); 
-					graphics::drawText(8,65,3,"Genre    :"+ currentMovie->getGenre(),br); 
-					graphics::drawText(8,69,3,"Year     :"+ to_string(currentMovie->getYear()),br); 
+
+					//Draw static string in the screen
+					graphics::drawText(8,57,3,"Director :",br); 
+					graphics::drawText(8,61,3,"Stars :",br); 
+					graphics::drawText(8,65,3,"Genre :",br); 
+					graphics::drawText(8,69,3,"Year :",br); 
+
+					// Draw movie member variables in the screen				
+					graphics::drawText(30,57,3,currentMovie->getDirectors(),br); 
+					graphics::drawText(30,61,3,currentMovie->getStars(),br); 
+					graphics::drawText(30,65,3,currentMovie->getGenre(),br); 
+					graphics::drawText(30,69,3,to_string(currentMovie->getYear()),br);	
 				}
 		}		
 		
 		state = STATE_DRAW;
-
 		return;
 	}
 
@@ -109,7 +109,7 @@ void Interface::update()
 	if (state == STATE_INIT)
 	{
 		state = STATE_DRAW;
-		return;
+		//return;
 	}
 
 	if (state == STATE_DRAW)
@@ -118,58 +118,41 @@ void Interface::update()
 		//return;
 	}
 
+	if (state == STATE_CLICKED)
+	{
+		graphics::MouseState mouse;
+    	getMouseState(mouse);
 
-
-if (state == STATE_CLICKED)
-{
-
-
-	graphics::MouseState mouse;
-    getMouseState(mouse);
-
-    float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
-    float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
+    	float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
+    	float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
     
-    if(mouse.button_left_pressed)
-    {
-		
-   		for (auto image : imageList)
+    	if(mouse.button_left_pressed)
     	{
-    		if (info->isInside(xx,yy) && image->isInside(xx,yy) == false)
+   			for (auto image : imageList)
     		{
-				info->setIsClicked(true);    		
-    		}
-    		else
-    		{
-    			info->setIsClicked(false);
-    		}
-    	
-
-
-    		if (image->isInside(xx,yy))
-    		{		
-    	 		image->setIsClicked(true);
-
-    	 		
-    		}
-    		else
-    		{
-    			image->setIsClicked(false);
-
-    			
-    		}
-    		
-		}
-	
-		state = STATE_DRAW;
-		//return;
- 	}
-
-
-}
-
-
+    			if (info->isInside(xx,yy) && image->isInside(xx,yy) == false)
+    			{
+					info->setIsClicked(true);    		
+    			}
+    			else
+    			{
+    				info->setIsClicked(false);
+    			}
+    			if (image->isInside(xx,yy))
+    			{		
+    	 			image->setIsClicked(true);
+    			}
+    			else
+    			{
+    				image->setIsClicked(false);
+    			}
+			}
+			state = STATE_DRAW;
+			//return;
+ 		}
+	}
 }   
+
 
 Interface* Interface::getInstance() {
 	if (m_instance == nullptr) {
