@@ -17,7 +17,7 @@ Interface::Interface()
 
 	float ii = 0.0f;
 	for(int i = 0 ; i < GENRE_NUM; i++){
-		genreButton[i] = new Button(14+ii,57,12,5,genres[i]);
+		genreButton[i] = new Button(25+ii,15,12,5,genres[i]);
 		ii+=30;
 	}
 }
@@ -123,7 +123,7 @@ void Interface::draw()
 		for(int i = 0; i < GENRE_NUM; i++){
 			genreButton[i]->draw();
 		}
-
+		
 		
 
 	}
