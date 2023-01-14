@@ -11,6 +11,15 @@ Interface::Interface()
 	createMovieList(movieList);
 	button = new Button(CANVAS_WIDTH-30,57,12,5,"Filter");
 	info   = new Button(50,46,8,5,"Info");
+
+
+	string genres[] = {"thriller","horror","drama","action"};
+
+	float ii = 0.0f;
+	for(int i = 0 ; i < GENRE_NUM; i++){
+		genreButton[i] = new Button(14+ii,57,12,5,genres[i]);
+		ii+=30;
+	}
 }
 
 //Interface Destructor
@@ -35,8 +44,6 @@ void Interface::draw()
     graphics::setFont("assets//FFF_Tusj.ttf");
  	graphics::drawText(CANVAS_WIDTH/2 - 11,CANVAS_HEIGHT-76,5, "Movies", br);
 
- 	button->draw();
-	
 	// if state init draw the movies
 	if (state == STATE_INIT)
 	{
@@ -53,6 +60,7 @@ void Interface::draw()
 
 	if (state == STATE_DRAW)
 	{
+
 		for (auto image : imageList)
 		{
 			image->draw();
@@ -60,12 +68,19 @@ void Interface::draw()
 
 		state = STATE_CLICKED;
 		return;
-
 	}
 	
  
 	if (state == STATE_CLICKED)
-	{
+	{		
+		button->draw();
+
+		if (button->getIsClicked()== true )
+		{
+			state = STATE_FILTER;
+			return;
+		}
+	
 		for (auto image : imageList)
 		{
 			image->draw();
@@ -102,10 +117,31 @@ void Interface::draw()
 		return;
 	}
 
+	if (state == STATE_FILTER)
+	{
+		graphics::drawText(6,10,5,"Select Genre:",br);
+		for(int i = 0; i < GENRE_NUM; i++){
+			genreButton[i]->draw();
+		}
+
+		
+
+	}
+
+
+
 }
 
 void Interface::update()
 {
+
+	graphics::MouseState mouse;
+    getMouseState(mouse);
+
+    float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
+    float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
+
+
 	if (state == STATE_INIT)
 	{
 		state = STATE_DRAW;
@@ -120,14 +156,19 @@ void Interface::update()
 
 	if (state == STATE_CLICKED)
 	{
-		graphics::MouseState mouse;
-    	getMouseState(mouse);
-
-    	float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
-    	float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
-    
+		
     	if(mouse.button_left_pressed)
     	{
+    		if (button->isInside(xx,yy))
+    		{
+    			button->setIsClicked(true);
+    		}
+    		else
+    		{
+    			button->setIsClicked(false);
+    		}
+
+
    			for (auto image : imageList)
     		{
     			if (info->isInside(xx,yy) && image->isInside(xx,yy) == false)

@@ -17,7 +17,7 @@ using namespace std;
 class Interface: public Widget{
 
 public:
-	enum interfaceState{STATE_INIT,STATE_CLICKED,STATE_DRAW};  
+	enum interfaceState{STATE_INIT,STATE_CLICKED,STATE_DRAW,STATE_FILTER,STATE_NEW};  
 
 private:	
 	list<Movie *> movieList;			// List with pointers to Movie objects
@@ -25,8 +25,8 @@ private:
 	Image *currentImage = nullptr;		// Image  pointer 
 	Movie *currentMovie = nullptr;		// Movie  pointer
 	Button *button 		= nullptr;		// Button pointer
-	Button *info		= nullptr;	
-	string input = "";
+	Button *info		= nullptr;		// Button pointer
+	Button *genreButton[4];				// Array of Button pointer
 
 protected:
 	static Interface* m_instance;
