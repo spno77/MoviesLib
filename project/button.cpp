@@ -19,18 +19,19 @@ void Button::update()
 void Button::draw()
 {
 	graphics::Brush br;
-	br.outline_opacity = 0.5f;
-
-	SETCOLOR(br.fill_color,0.7,0.7,0.7);
+	
+	SETCOLOR(br.fill_color,1.0,1.0,1.0);
+	br.outline_opacity = 0.0f;
+    br.texture = "assets//button.png";
     graphics::drawRect(positionX,positionY,width,height,br);
 
     graphics::setFont("assets//OpenSans-Regular.ttf");
-    SETCOLOR(br.fill_color,0.1,0.2,0.1);
+    SETCOLOR(br.fill_color,0.0,0.0,0.0);
     
     int textPosX,textPosY;  			
     
     // where text is located in the screen 
-    textPosX = positionX - (width/2) + 1;
+    textPosX = positionX - (width/2)+1;
     textPosY = positionY + 1;
    
     graphics::drawText(textPosX,textPosY,4,text, br);
