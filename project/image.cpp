@@ -20,9 +20,6 @@ void Image::update()
 void Image::draw()
 {
 	graphics::Brush br;
-	float h = 1.0f * m_highlighted;
-    SETCOLOR(br.fill_color,h,h,h);
-    br.outline_opacity = 1.0f * (m_active);
 	
 	SETCOLOR(br.fill_color,1.0,1.0,1.0);
 	br.texture = path; 
@@ -32,8 +29,3 @@ void Image::draw()
 // path getter/setter
 string Image::getPath(){ return path;}
 void   Image::setPath(string path1){ path = path1;}
-
-// setters for highlighted and active bool variables
-void Image::setHighlight(bool highlight) { m_highlighted = highlight; }
-void Image::setActive(bool active) { m_active = active; }
-bool Image::getActive(){return m_active;}

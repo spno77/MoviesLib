@@ -128,7 +128,7 @@ void Interface::draw()
 	//STATE FILTER
 	if (state == STATE_FILTER)
 	{
-		backButton->draw(); //draw backButton
+		backButton->draw(); 	//draw backButton
 
 		if (backButton->getIsClicked() == true)
 		{
