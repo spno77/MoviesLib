@@ -33,7 +33,6 @@ Interface::Interface()
 		yearButton[i] = new Button(20+ii,45,12,5,years[i]);
 		ii+=25;
 	}
-
 }
 
 //Interface Destructor
