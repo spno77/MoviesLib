@@ -22,11 +22,12 @@ public:
 private:	
 	list<Movie *> movieList;			// List with pointers to Movie objects
 	list<Image *> imageList;			// List with pointers to Image objects
-	Image *currentImage = nullptr;		// Image  pointer 
-	Movie *currentMovie = nullptr;		// Movie  pointer
-	Button *button 		= nullptr;		// Button pointer
-	Button *info		= nullptr;		// Button pointer
+	Image *currentImage  = nullptr;		// Image  pointer 
+	Movie *currentMovie  = nullptr;		// Movie  pointer
+	Button *filterButton = nullptr;		// Button pointer
+	Button *info		 = nullptr;		// Button pointer
 	Button *genreButton[4];				// Array of Button pointer
+	Button *backButton	 = nullptr;		// Button pointer
 
 protected:
 	static Interface* m_instance;

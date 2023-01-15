@@ -59,5 +59,3 @@ Movie* searchListByGenre(list<Movie *> &movieList,string genre);
 
 // Get movie from the list by year of production
 Movie* searchListByYear(list<Movie *> &movieList,string posterPath);
-
-

@@ -9,24 +9,28 @@ Interface* Interface::m_instance = nullptr;
 Interface::Interface()
 {
 	createMovieList(movieList);
-	button = new Button(CANVAS_WIDTH-30,57,12,5,"Filter");
-	info   = new Button(50,46,8,5,"Info");
+	filterButton = new Button(CANVAS_WIDTH-30,57,12,5,"Filter");
+	info   		 = new Button(50,46,8,5,"Info");
 
 
 	string genres[] = {"thriller","horror","drama","action"};
 
 	float ii = 0.0f;
-	for(int i = 0 ; i < GENRE_NUM; i++){
+	for(int i = 0 ; i < GENRE_NUM; i++)
+	{
 		genreButton[i] = new Button(25+ii,15,12,5,genres[i]);
 		ii+=30;
 	}
+
+	backButton = new Button(6,CANVAS_HEIGHT-78,12,5,"Back");
+
 }
 
 //Interface Destructor
 Interface::~Interface()
 {
 	destroyList(movieList);
-	delete button;
+	delete filterButton;
 	delete info; 
 }
 
@@ -44,7 +48,7 @@ void Interface::draw()
     graphics::setFont("assets//FFF_Tusj.ttf");
  	graphics::drawText(CANVAS_WIDTH/2 - 11,CANVAS_HEIGHT-76,5, "Movies", br);
 
-	// if state init draw the movies
+	//STATE INIT
 	if (state == STATE_INIT)
 	{
 	 	float i = 0.0;
@@ -57,25 +61,23 @@ void Interface::draw()
 		state = STATE_DRAW;
 		return;
 	}
-
+	//STATE DRAW
 	if (state == STATE_DRAW)
 	{
-
 		for (auto image : imageList)
 		{
 			image->draw();
 		}
-
 		state = STATE_CLICKED;
 		return;
 	}
 	
- 
+ 	//STATE CLICKED
 	if (state == STATE_CLICKED)
 	{		
-		button->draw();
+		filterButton->draw();
 
-		if (button->getIsClicked()== true )
+		if (filterButton->getIsClicked()== true )
 		{
 			state = STATE_FILTER;
 			return;
@@ -112,13 +114,25 @@ void Interface::draw()
 					graphics::drawText(30,69,3,to_string(currentMovie->getYear()),br);	
 				}
 		}		
-		
 		state = STATE_DRAW;
 		return;
 	}
 
+	//STATE FILTER
 	if (state == STATE_FILTER)
 	{
+
+		//draw backButton
+		backButton->draw();
+
+		if (backButton->getIsClicked() == true)
+		{
+			state = STATE_DRAW;
+			backButton->setIsClicked(false);
+			filterButton->setIsClicked(false);
+			return;
+		}
+
 		graphics::drawText(6,10,5,"Select Genre:",br);
 		for(int i = 0; i < GENRE_NUM; i++){
 			genreButton[i]->draw();
@@ -128,15 +142,25 @@ void Interface::draw()
 		{
 			if (genreButton[i]->getIsClicked())
 			{
-				graphics::drawText(33,23,6,"Ssdfre:",br);
+				Movie *movie = nullptr; //movie pointer
+				movie = searchListByGenre(movieList,genreButton[i]->getText());
+
+				//Draw static string in the screen
+				graphics::drawText(8,57,3,"Director :",br); 
+				graphics::drawText(8,61,3,"Stars :",br); 
+				graphics::drawText(8,65,3,"Genre :",br); 
+				graphics::drawText(8,69,3,"Year :",br); 
+
+				graphics::drawText(8,50,6,movie->getTitle(), br);
+				
+				// Draw movie member variables in the screen				
+				graphics::drawText(30,57,3,movie->getDirectors(),br); 
+				graphics::drawText(30,61,3,movie->getStars(),br); 
+				graphics::drawText(30,65,3,movie->getGenre(),br); 
+				graphics::drawText(30,69,3,to_string(movie->getYear()),br);	
 			}
 		}
-		
-
 	}
-
-
-
 }
 
 void Interface::update()
@@ -152,13 +176,12 @@ void Interface::update()
 	if (state == STATE_INIT)
 	{
 		state = STATE_DRAW;
-		//return;
 	}
 
 	if (state == STATE_DRAW)
 	{
+		//button->setIsClicked(false);
 		state = STATE_CLICKED;
-		//return;
 	}
 
 	if (state == STATE_CLICKED)
@@ -166,15 +189,15 @@ void Interface::update()
 		
     	if(mouse.button_left_pressed)
     	{
-    		if (button->isInside(xx,yy))
+    		if (filterButton->isInside(xx,yy))
     		{
-    			button->setIsClicked(true);
-    			state = STATE_FILTER;
-    			return;
+    			filterButton->setIsClicked(true);
+    			state = STATE_FILTER;		
+ 				return;   		
     		}
     		else
     		{
-    			button->setIsClicked(false);
+    			filterButton->setIsClicked(false);
     		}
 
 
@@ -198,7 +221,6 @@ void Interface::update()
     			}
 			}
 			state = STATE_DRAW;
-			//return;
  		}
 	}
 
@@ -206,6 +228,16 @@ void Interface::update()
 	{
 		if (mouse.button_left_pressed)
 		{
+			if (backButton->isInside(xx,yy))
+			{
+				backButton->setIsClicked(true);
+				state = STATE_DRAW;
+			}
+			else
+			{
+				backButton->setIsClicked(false);
+			}
+
 			for (int i = 0; i < GENRE_NUM; ++i)
 			{
 				if (genreButton[i]->isInside(xx,yy))
@@ -221,10 +253,6 @@ void Interface::update()
 		}
 		
 	}
-
-
-
-
 }   
 
 
