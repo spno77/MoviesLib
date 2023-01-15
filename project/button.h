@@ -13,7 +13,7 @@ using namespace std;
 //class Button is a derived class of RectWidget
 class Button: public RectWidget
 {
-	string text;	// Text written inside the button surface								
+	string text;	// Text written inside the button's surface								
 public:
 	Button(float posX,float posY,float width1,float height1,string text1);
 	~Button();					 

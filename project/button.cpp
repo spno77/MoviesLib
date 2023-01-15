@@ -20,8 +20,6 @@ void Button::draw()
 {
 	graphics::Brush br;
 	
-   
-
 	SETCOLOR(br.fill_color,1.0,1.0,1.0);
 	br.outline_opacity = 0.0f;
     br.texture = "assets//button.png";

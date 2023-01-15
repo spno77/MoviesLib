@@ -13,7 +13,7 @@ Interface::Interface()
 	createMovieList(movieList);
 
 	filterButton = new Button(CANVAS_WIDTH-30,57,12,5,"Filter");
-	info   		 = new Button(50,46,8,5,"Info");
+	info   		 = new Button(50,48,8,5,"Info");
 
 	string genres[] = {"thriller","horror","drama","action"};
 

@@ -29,7 +29,7 @@ void Image::draw()
     graphics::drawRect(positionX,positionY,width,height,br);
 }
 
-//path getter/setter
+// path getter/setter
 string Image::getPath(){ return path;}
 void   Image::setPath(string path1){ path = path1;}
 

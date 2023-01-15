@@ -20,26 +20,27 @@ public:
 	Movie(string title1,int year1,string directors1,string stars1,string genre1,string path);
 	~Movie();
 
+	//Title getter/setter
 	string getTitle();
 	void  setTitle(string title1);
 
-	//Year
+	//Year getter/setter
 	int   getYear();
 	void  setYear(int year1);
 
-	//Directors
+	//Directors getter/setter
 	string getDirectors();
 	void   setDirectors(string directors1);
 
-	//Stars
+	//Stars getter/setter
 	string getStars();
 	void   setStars(string stars1);
 
-	//Genre
+	//Genre getter/setter
 	string getGenre();
 	void   setGenre(string genre1);
 
-	//Poster
+	//Poster getter/setter
 	string getPosterPath();
 	void   setPosterPath(string path);
 

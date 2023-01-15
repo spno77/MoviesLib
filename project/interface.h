@@ -17,6 +17,7 @@ using namespace std;
 class Interface: public Widget{
 
 public:
+	//Interface states
 	enum interfaceState{STATE_INIT,STATE_CLICKED,STATE_DRAW,STATE_FILTER,STATE_NEW};  
 
 private:	
@@ -45,5 +46,4 @@ public:
 
 	static void releaseInstance();
 	static Interface* getInstance();
-
 };
