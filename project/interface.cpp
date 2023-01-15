@@ -1,7 +1,6 @@
 #include <iterator>
 #include <list>
 #include "interface.h"
-#include <unistd.h>
 
 //Initialize m_instance
 Interface* Interface::m_instance = nullptr;
@@ -128,7 +127,7 @@ void Interface::draw()
 	//STATE FILTER
 	if (state == STATE_FILTER)
 	{
-		backButton->draw(); 	//draw backButton
+		backButton->draw(); //draw backButton
 
 		if (backButton->getIsClicked() == true)
 		{
@@ -150,17 +149,17 @@ void Interface::draw()
 				movie = searchListByGenre(movieList,genreButton[i]->getText());
 
 				//Draw static string in the screen
-				graphics::drawText(8,57,3,"Director :",br); 
-				graphics::drawText(8,61,3,"Stars :",br); 
-				graphics::drawText(8,65,3,"Genre :",br); 
-				graphics::drawText(8,69,3,"Year :",br); 
+				graphics::drawText(35,27,3,"Director :",br); 
+				graphics::drawText(35,31,3,"Stars :",br); 
+				graphics::drawText(96,27,3,"Genre :",br); 
+				graphics::drawText(96,31,3,"Year :",br); 
 
-				graphics::drawText(8,50,6,movie->getTitle(), br);
+				graphics::drawText(8,29,5,movie->getTitle(), br);
 				// Draw movie member variables in the screen				
-				graphics::drawText(30,57,3,movie->getDirectors(),br); 
-				graphics::drawText(30,61,3,movie->getStars(),br); 
-				graphics::drawText(30,65,3,movie->getGenre(),br); 
-				graphics::drawText(30,69,3,to_string(movie->getYear()),br);	
+				graphics::drawText(51,27,3,movie->getDirectors(),br); 
+				graphics::drawText(51,31,3,movie->getStars(),br); 
+				graphics::drawText(112,27,3,movie->getGenre(),br); 
+				graphics::drawText(112,31,3,to_string(movie->getYear()),br);	
 			}
 		}
 	}

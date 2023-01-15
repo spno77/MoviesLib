@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//Image widget
+//Image widget inherits from RectWidget class
 class Image: public RectWidget
 {
 	string path;  	// Path of image's png file
@@ -22,5 +22,4 @@ public:
 	//Path's getter/setter
 	string getPath();
 	void   setPath(string path1);
-
 };
