@@ -3,15 +3,17 @@
 #include "interface.h"
 #include <unistd.h>
 
+//Initialize m_instance
 Interface* Interface::m_instance = nullptr;
 
 //Interface Constructor
 Interface::Interface()
 {
+	//create a MovieList
 	createMovieList(movieList);
+
 	filterButton = new Button(CANVAS_WIDTH-30,57,12,5,"Filter");
 	info   		 = new Button(50,46,8,5,"Info");
-
 
 	string genres[] = {"thriller","horror","drama","action"};
 
@@ -23,7 +25,6 @@ Interface::Interface()
 	}
 
 	backButton = new Button(6,CANVAS_HEIGHT-78,12,5,"Back");
-
 }
 
 //Interface Destructor
@@ -31,13 +32,19 @@ Interface::~Interface()
 {
 	destroyList(movieList);
 	delete filterButton;
-	delete info; 
+	delete info;
+
+	for (int i = 0; i < GENRE_NUM; ++i)
+	{
+		delete genreButton[i];
+	}
+
+	delete backButton;
 }
 
 //Initialization of Interface member varialbes(is done in constructor)
 void Interface::init()
 {}
-
 
 //Draws a Movie Interface
 void Interface::draw()
@@ -61,6 +68,7 @@ void Interface::draw()
 		state = STATE_DRAW;
 		return;
 	}
+
 	//STATE DRAW
 	if (state == STATE_DRAW)
 	{
@@ -82,7 +90,6 @@ void Interface::draw()
 			state = STATE_FILTER;
 			return;
 		}
-	
 		for (auto image : imageList)
 		{
 			image->draw();
@@ -121,9 +128,7 @@ void Interface::draw()
 	//STATE FILTER
 	if (state == STATE_FILTER)
 	{
-
-		//draw backButton
-		backButton->draw();
+		backButton->draw(); //draw backButton
 
 		if (backButton->getIsClicked() == true)
 		{
@@ -132,7 +137,6 @@ void Interface::draw()
 			filterButton->setIsClicked(false);
 			return;
 		}
-
 		graphics::drawText(6,10,5,"Select Genre:",br);
 		for(int i = 0; i < GENRE_NUM; i++){
 			genreButton[i]->draw();
@@ -152,7 +156,6 @@ void Interface::draw()
 				graphics::drawText(8,69,3,"Year :",br); 
 
 				graphics::drawText(8,50,6,movie->getTitle(), br);
-				
 				// Draw movie member variables in the screen				
 				graphics::drawText(30,57,3,movie->getDirectors(),br); 
 				graphics::drawText(30,61,3,movie->getStars(),br); 
@@ -165,13 +168,11 @@ void Interface::draw()
 
 void Interface::update()
 {
-
 	graphics::MouseState mouse;
     getMouseState(mouse);
 
     float xx = graphics::windowToCanvasX(mouse.cur_pos_x);
     float yy = graphics::windowToCanvasY(mouse.cur_pos_y);
-
 
 	if (state == STATE_INIT)
 	{
@@ -180,13 +181,11 @@ void Interface::update()
 
 	if (state == STATE_DRAW)
 	{
-		//button->setIsClicked(false);
 		state = STATE_CLICKED;
 	}
 
 	if (state == STATE_CLICKED)
 	{
-		
     	if(mouse.button_left_pressed)
     	{
     		if (filterButton->isInside(xx,yy))
@@ -199,7 +198,6 @@ void Interface::update()
     		{
     			filterButton->setIsClicked(false);
     		}
-
 
    			for (auto image : imageList)
     		{
@@ -248,13 +246,10 @@ void Interface::update()
 				{
 					genreButton[i]->setIsClicked(false);
 				}
-			}
-			
+			}	
 		}
-		
 	}
 }   
-
 
 Interface* Interface::getInstance() {
 	if (m_instance == nullptr) {
