@@ -27,7 +27,9 @@ private:
 	Movie *currentMovie  = nullptr;		// Movie  pointer
 	Button *filterButton = nullptr;		// Button pointer
 	Button *info		 = nullptr;		// Button pointer
-	Button *genreButton[4];				// Array of Button pointer
+	// Array of Button pointer
+	Button *genreButton[GENRE_NUM],*yearButton[DATES_NUM];	
+
 	Button *backButton	 = nullptr;		// Button pointer
 
 protected:

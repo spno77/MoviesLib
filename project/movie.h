@@ -7,6 +7,7 @@
 
 using namespace std;
 
+//Movie Class
 class Movie
 {
 	string title;			// Movie's title
@@ -43,7 +44,6 @@ public:
 	//Poster getter/setter
 	string getPosterPath();
 	void   setPosterPath(string path);
-
 };
 
 // creates a List with pointers to Movie objects
@@ -59,4 +59,4 @@ Movie* searchListByPoster(list<Movie *> &movieList,string posterPath);
 Movie* searchListByGenre(list<Movie *> &movieList,string genre);
 
 // Get movie from the list by year of production
-Movie* searchListByYear(list<Movie *> &movieList,string posterPath);
+Movie* searchListByYear(list<Movie *> &movieList,int year);

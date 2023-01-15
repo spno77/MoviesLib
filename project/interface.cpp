@@ -24,6 +24,16 @@ Interface::Interface()
 	}
 
 	backButton = new Button(6,CANVAS_HEIGHT-78,12,5,"Back");
+
+	string years[] = {"1999","2015","2017","2019","2022"};
+	
+	ii = 0.0f; //reinitialize ii to 0
+	for (int i = 0; i < DATES_NUM; ++i)
+	{
+		yearButton[i] = new Button(20+ii,45,12,5,years[i]);
+		ii+=25;
+	}
+
 }
 
 //Interface Destructor
@@ -36,6 +46,11 @@ Interface::~Interface()
 	for (int i = 0; i < GENRE_NUM; ++i)
 	{
 		delete genreButton[i];
+	}
+
+	for (int i = 0; i < DATES_NUM; ++i)
+	{
+		delete yearButton[i];
 	}
 
 	delete backButton;
@@ -137,8 +152,15 @@ void Interface::draw()
 			return;
 		}
 		graphics::drawText(6,10,5,"Select Genre:",br);
+		
+		//Draw genreButtons in the screen
 		for(int i = 0; i < GENRE_NUM; i++){
 			genreButton[i]->draw();
+		}
+
+		//Draw yearButtons in the screen
+		for(int i = 0; i < DATES_NUM; i++){
+			yearButton[i]->draw();
 		}
 
 		for (int i = 0; i < GENRE_NUM; ++i)
@@ -160,6 +182,32 @@ void Interface::draw()
 				graphics::drawText(51,31,3,movie->getStars(),br); 
 				graphics::drawText(112,27,3,movie->getGenre(),br); 
 				graphics::drawText(112,31,3,to_string(movie->getYear()),br);	
+			}
+		}
+
+		for (int i = 0; i < DATES_NUM; ++i)
+		{
+			if (yearButton[i]->getIsClicked())
+			{
+				Movie *movie = nullptr; // movie pointer
+				int year = 0;			// init year variable to 0
+				
+				// from string to int
+				year =  stoi(yearButton[i]->getText());
+				movie = searchListByYear(movieList,year);
+
+				//Draw static string in the screen
+				graphics::drawText(35,57,3,"Director :",br); 
+				graphics::drawText(35,61,3,"Stars :",br); 
+				graphics::drawText(96,57,3,"Genre :",br); 
+				graphics::drawText(96,61,3,"Year :",br); 
+
+				graphics::drawText(8,59,5,movie->getTitle(), br);
+				// Draw movie member variables in the screen				
+				graphics::drawText(51,57,3,movie->getDirectors(),br); 
+				graphics::drawText(51,61,3,movie->getStars(),br); 
+				graphics::drawText(112,57,3,movie->getGenre(),br); 
+				graphics::drawText(112,61,3,to_string(movie->getYear()),br);	
 			}
 		}
 	}
@@ -245,7 +293,18 @@ void Interface::update()
 				{
 					genreButton[i]->setIsClicked(false);
 				}
-			}	
+			}
+			for (int i = 0; i < DATES_NUM; ++i)
+			{
+				if (yearButton[i]->isInside(xx,yy))
+				{
+					yearButton[i]->setIsClicked(true);
+				}
+				else
+				{
+					yearButton[i]->setIsClicked(false);
+				}
+			}
 		}
 	}
 }   
