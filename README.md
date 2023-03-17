@@ -1,6 +1,6 @@
 # MoviesLib
 
-GUI cpp program
+GUI C++ program
 
 # Installation
 
