@@ -4,13 +4,13 @@ GUI cpp program
 
 # Installation
 
-* Install **Simple Game Graphics Library**
+Install **Simple Game Graphics Library**
 	`https://cgaueb.github.io/sgg/page_building_sgg.html`
 
-*  Compile the program	
-	Run `./build.sh`
+Compile the program	
+	`./build.sh`
 
-* Run the program
+Run the program
 	`cd bin && ./main`
 
 # Images
