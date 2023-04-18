@@ -12,6 +12,10 @@ Compile the program
 
 Run the program
 	`cd bin && ./main`
+	
+# Demo
+
+![video](https://github.com/spno77/MoviesLib/blob/main/bin/assets/demo.mp4)
 
 # Images
 
